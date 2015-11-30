@@ -218,8 +218,9 @@ end
 
 axes(handles.axes5);
 [networkPic, map, alpha] = imread(handles.image);
-image(networkPic,'AlphaData',alpha);
-set(handles.axes5,'XTick',[],'YTick',[],'box','on');
+imagesc(networkPic,'AlphaData',alpha);
+axis off;
+axis image;
 axes(handles.axes4);
 if exist('C', 'var')
     net1 = getLim(n1);
