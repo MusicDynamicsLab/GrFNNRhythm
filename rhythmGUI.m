@@ -122,11 +122,26 @@ switch stimulusChoice
     case 2
         stimulus = 'comp1p1.mid';
     case 3
-        stimulus = 'comp2p1.mid';
+        stimulus = 'comp1p2.mid';
     case 4
-        stimulus = 'comp3p1.mid';
+        stimulus = 'comp2p1.mid';
     case 5
+        stimulus = 'comp2p2.mid';
+    case 6
+        stimulus = 'comp3p1.mid';
+    case 7
+        stimulus = 'comp3p2.mid';
+    case 8
         stimulus = 'comp4p1.mid';
+    case 9
+        stimulus = 'comp4p2.mid';
+    case 10
+        stimulus = 'comp4p3.mid';
+    case 11
+        stimulus = 'comp4p4.mid';
+    case 12 
+        stimulus = 'comp4p5.mid';
+        
 end
 
 switch rhythmChoice
@@ -175,7 +190,9 @@ function popupmenu1_CreateFcn(hObject, eventdata, handles)
 % handles    empty - handles not created until after all CreateFcns called
 
 set(hObject,'BackgroundColor','white');
-complexity = {'0', '1', '2', '3', '4'};
+complexity = {'comp0p1.mid';'comp1p1.mid';'comp1p2.mid';'comp2p1.mid';...
+    'comp2p2.mid';'comp3p1.mid';'comp3p2.mid';'comp4p1.mid';'comp4p2.mid';...
+    'comp4p3.mid';'comp4p4.mid';'comp4p5.mid'};
 set(hObject, 'String', complexity);
 
 % --- Executes during object creation, after setting all properties.
@@ -219,6 +236,7 @@ end
 axes(handles.axes5);
 [networkPic, map, alpha] = imread(handles.image);
 imagesc(networkPic,'AlphaData',alpha);
+set(handles.axes5,'XTick',[],'YTick',[],'box','on');
 axis off;
 axis image;
 axes(handles.axes4);
