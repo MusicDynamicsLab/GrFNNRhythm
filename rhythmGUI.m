@@ -246,5 +246,8 @@ if exist('C', 'var')
     imagesc(net1, net2, abs(C)); colormap(flipud(hot));  colorbar;
     set(gca, 'XScale', 'Log', 'YScale', 'Log', 'XTick', n1.tick, 'YTick', n1.tick)
     grid on
+    xlabel('Frequency of source oscillator (Hz)')
+    ylabel('Frequency of target oscillator (Hz)')
+    title('Connection Matrix')
 end
 M = odeRK4fs(M, s);
