@@ -75,7 +75,7 @@ if strcmp(get(hObject,'Visible'),'off')
 end
 
 % Create tooltipstrings (i.e. hover for description) for stimulus and model
-s1 = sprintf('Choose the rhythmic complexity of \n the stimulus from low (0) to high (4)');
+s1 = sprintf('Choose the the stimulus');
 set(handles.text1, 'TooltipString', s1);
 set(handles.popupmenu1, 'TooltipString', s1);
 s2 = sprintf('Choose the model structure \n that will process the rhythm');
@@ -190,9 +190,12 @@ function popupmenu1_CreateFcn(hObject, eventdata, handles)
 % handles    empty - handles not created until after all CreateFcns called
 
 set(hObject,'BackgroundColor','white');
-complexity = {'comp0p1.mid';'comp1p1.mid';'comp1p2.mid';'comp2p1.mid';...
-    'comp2p2.mid';'comp3p1.mid';'comp3p2.mid';'comp4p1.mid';'comp4p2.mid';...
-    'comp4p3.mid';'comp4p4.mid';'comp4p5.mid'};
+complexity = {'Complexity level 0, Pattern 1';...
+    'Complexity level 1, Pattern 1';'Complexity level 1, Pattern 2';...
+    'Complexity level 2, Pattern 1';'Complexity level 2, Pattern 2';...
+    'Complexity level 3, Pattern 1';'Complexity level 3, Pattern 2';...
+    'Complexity level 4, Pattern 1';'Complexity level 4, Pattern 2';...
+    'Complexity level 4, Pattern 3';'Complexity level 4, Pattern 4'};
 set(hObject, 'String', complexity);
 
 % --- Executes during object creation, after setting all properties.
@@ -202,7 +205,8 @@ function popupmenu2_CreateFcn(hObject, eventdata, handles)
 % handles    empty - handles not created until after all CreateFcns called
 
 set(hObject,'BackgroundColor','white');
-rhythmModel = {'makeRhythm1';'makeRhythm1c1';'makeRhythm1c3';'makeRhythm2';'makeRhythm2c1';'makeRhythm2c3'};
+rhythmModel = {'One Layer';'One Layer, local connection';'One Layer, harmonic connection';...
+               'Two Layer, afferent only';'Two Layer, afferent, local';'Two layer, harmonic connection'};
 set(hObject, 'String', rhythmModel);
 
 function y = runRhythm(stimulus, rhythm, handles)
