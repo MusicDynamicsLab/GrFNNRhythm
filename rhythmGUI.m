@@ -206,7 +206,7 @@ function popupmenu2_CreateFcn(hObject, eventdata, handles)
 
 set(hObject,'BackgroundColor','white');
 rhythmModel = {'One Layer';'One Layer, local connection';'One Layer, harmonic connection';...
-               'Two Layer, afferent only';'Two Layer, afferent, local';'Two layer, harmonic connection'};
+               'Two Layer, afferent only';'Two Layer, afferent, local';'Two layer, afferent, harmonic'};
 set(hObject, 'String', rhythmModel);
 
 function y = runRhythm(stimulus, rhythm, handles)
