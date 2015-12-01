@@ -81,6 +81,7 @@ set(handles.popupmenu1, 'TooltipString', s1);
 s2 = sprintf('Choose the model structure \n that will process the rhythm');
 set(handles.text2, 'TooltipString', s2);
 set(handles.popupmenu2, 'TooltipString', s2);
+set(handles.uipanel1, 'BackgroundColor', get(gcf,'Color'))
 
 
 
