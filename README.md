@@ -1,21 +1,17 @@
 # GrFNNRhythm
 
-Repository for rhythm model.
+This repository contains a user interface to explore GrFNN models for processing musical rhythms. The GUI allows the user to choose a stimulus of a given rhythmic complexity (from a straightforward isochronous rhythm to more rhythmically complex syncopated rhythms) and process it through one of the following six GrFNN models:
 
-This repository contains six different rhythm models, implemented in the following scripts:
+1 - One GrFNN layer with no internal connections. This model can be used by selecting "One Layer" in the dropdown menu.
 
-rhythm1 – one layer, no internal connections
+2 - One GrFNN layer with local (1:1) internal connections. Can be used by selecting "One Layer, local connection" in the dropdown menu.
 
-rhythm1c1 – one layer, local (1:1) internal connections
+3 - One GrFNN layer with 1:1, 2:1, 3:1, 1:2, and 1:3 internal connections. Can be used by selecting "One Layer, harmonic connections" in the dropdown menu.
 
-rhythm1c3 – one layer, internal connections, 1:1, 2:1, 3:1, 1:2, 1:3
+4 - Two GrFNN layers with local (1:1) afferent connections, no internal connections. Can be used by selecting "Two Layer, afferent only"
 
-rhythm2 – two layer2, local (1:1) afferent connections, no internal connections
+5 - Two GrFNN layers with local (1:1) afferent, efferent, and internal connections. Can be used by selecting "Two Layer, afferent, local"
 
-rhythm2c1 – two layer2, local (1:1) afferent, internal and efferent connections
+6 - Two GrFNN layers with 1:1, 2:1, 3:1, 1:2, and 1:3 afferent, efferent, and internal connections. Can be used by selecting "Two Layer, afferent, harmonic". 
 
-rhythm2c3 – two layer2, 1:1, 2:1, 3:1, 1:2, 1:3 afferent, internal and efferent connections
-
-The script rhythm2c3 is meant to be more-or-less the same as the Velasco & Large 2011 model from ISMIR. The most important difference is that the connections from Layer 2 (motor) to Layer 1 (sensory) are excitatory, not inhibitory. It is also nearly identical (with some simplifications) to the Large & Velasco model from the Herrera, Velasco & Large paper. The script experimentRhythms.m runs one time through each of the rhythms from the Velasco & Large experiment, and produces the figures from the Herrera, Velasco & Large paper. You can change the variable makeModel to point to any one of the six model scripts.
-
-These models still need parameters tweaked, including relative strength of the 2:1, 3:1, 1:2, 1:3 resonances.
+The last model is meant to be more-or-less the same as the Velasco & Large 2011 model from ISMIR. The most important difference is that the connections from Layer 2 (motor) to Layer 1 (sensory) are excitatory, not inhibitory. It is also nearly identical (with some simplifications) to the Large & Velasco model from [Large, Herrera and Velasco](journal.frontiersin.org/article/10.3389/fnsys.2015.00159/abstract). (Large EW, Herrera JA and Velasco MJ (2015) Neural Networks for Beat Perception in Musical Rhythm. Front. Syst. Neurosci. 9:159. doi: 10.3389/fnsys.2015.00159)
