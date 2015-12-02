@@ -139,8 +139,6 @@ switch stimulusChoice
     case 10
         stimulus = 'comp4p3.mid';
     case 11
-        stimulus = 'comp4p4.mid';
-    case 12 
         stimulus = 'comp4p5.mid';
         
 end
