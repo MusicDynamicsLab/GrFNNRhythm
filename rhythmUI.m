@@ -62,14 +62,15 @@ handles.ax4 = axes('Parent',hf','Units','normalized','Position',[.73 .3 .25 .45]
     'XTick',[],'YTick',[],'box','on');
 
 %% Define callback functions
-set(handles.pushbutton1,'Callback',{@pushbutton1_Callback,handles})
-set(handles.pushbutton2,'Callback',{@pushbutton2_Callback,handles})
+set(handles.pushbutton1,'Callback',{@runStop,handles})
+set(handles.pushbutton2,'Callback',{@pauseResume,handles})
 
 %% RUN button
-function pushbutton1_Callback(~, ~, handles)
-% hObject    handle to pushbutton1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+function runStop(source, ~, handles)
+uiresume(handles.hf)
+name = get(source,'String');
+
+%% Clear axes
 cla(handles.ax1);
 set(handles.ax1,'XTick',[],'YTick',[],'box','on');
 cla(handles.ax2);
@@ -84,6 +85,7 @@ cb = findall(gcf,'tag','Colorbar');
 delete(cb);
 tt = findall(gcf,'type','text');
 delete(tt);
+set(source,'String','Pause')
 
 axes('Parent',handles.hp1,'Units','normalized','Position',[0 0 1 1]);
 axis off;
@@ -118,35 +120,39 @@ switch stimulusChoice
     case 10
         stimulus = 'comp4p3.mid';
     case 11
-        stimulus = 'comp4p5.mid';
-        
+        stimulus = 'comp4p5.mid';     
 end
 
 switch rhythmChoice
     case 1
         handles.image = 'makeRhythm1.png';
-        runRhythm(stimulus,'makeRhythm1', handles);
+        model = 'makeRhythm1';
     case 2
         handles.image = 'makeRhythm1c.png';
-        runRhythm(stimulus,'makeRhythm1c1', handles);
+        model = 'makeRhythm1c1';
     case 3
         handles.image = 'makeRhythm1c.png';
-        runRhythm(stimulus,'makeRhythm1c3', handles);
+        model = 'makeRhythm1c3';
     case 4
         handles.image = 'makeRhythm2.png';
-        runRhythm(stimulus,'makeRhythm2', handles);
+        model = 'makeRhythm2';
     case 5
         handles.image = 'makeRhythm2c.png';
-        runRhythm(stimulus,'makeRhythm2c1', handles);
+        model = 'makeRhythm2c1';
     case 6
         handles.image = 'makeRhythm2c.png';
-        runRhythm(stimulus,'makeRhythm2c3', handles);
+        model = 'makeRhythm2c3';
 end
-%% Pause button
-function pushbutton2_Callback(~,~,handles)
-pause;
+
+if strcmp(name,'Run')
+    set(source,'String','Stop')
+    integrate(stimulus,model,handles);
+else
+    set(source,'String','Run')
+    initialRun;
+end
 %% Run rhythm function
-function runRhythm(stimulus,rhythm,handles)
+function integrate(stimulus,rhythm,handles)
 
 %% Parameters
 Fs = 48;
@@ -175,8 +181,8 @@ else
 end
 
 axes(handles.ax5);
-[networkPic, map, alpha] = imread(handles.image);
-imagesc(networkPic,'AlphaData',alpha);
+networkPic = imread(handles.image);
+image(networkPic);
 set(handles.ax5,'XTick',[],'YTick',[],'box','on');
 axis off;
 axis image;
@@ -191,4 +197,20 @@ if exist('C', 'var')
     ylabel('Frequency of target oscillator (Hz)')
     title('Connection Matrix')
 end
-M = odeRK4fs(M, s);
+
+try
+    M = odeRK4fs(M, s);
+catch
+    disp('User stopped integration')
+    interrupted = 1;
+end
+%% Pause button
+function pauseResume(source,~,handles)
+pauseOrResumeStr = get(source,'String');
+if(strcmp(pauseOrResumeStr,'Pause'))    
+    set(source,'String','Resume');
+    uiwait(handles.hf);
+else
+    set(source,'String','Pause');
+    uiresume(handles.hf);
+end
