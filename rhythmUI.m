@@ -145,7 +145,7 @@ switch rhythmChoice
 end
 
 if strcmp(name,'Run')
-    set(source,'String','Stop')
+    set(source,'String','Clear')
     integrate(stimulus,model,handles);
 else
     set(source,'String','Run')
@@ -190,7 +190,9 @@ axes(handles.ax4);
 if exist('C', 'var')
     net1 = getLim(n1);
     net2 = getLim(n1);
-    imagesc(net1, net2, abs(C)); colormap(flipud(hot));  colorbar;
+    imagesc(net1, net2, abs(C)); colormap(flipud(hot));  
+    hcb = colorbar;
+    set(hcb,'Location','NorthOutside')
     set(gca, 'XScale', 'Log', 'YScale', 'Log', 'XTick', n1.tick, 'YTick', n1.tick)
     grid on
     xlabel('Frequency of source oscillator (Hz)')
