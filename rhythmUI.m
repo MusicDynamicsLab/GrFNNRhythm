@@ -206,6 +206,7 @@ catch
     disp('User stopped integration')
     interrupted = 1;
 end
+set(handles.pushbutton1,'String','Run')
 %% Pause button
 function pauseResume(source,~,handles)
 pauseOrResumeStr = get(source,'String');
