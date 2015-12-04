@@ -12,16 +12,21 @@ function initialRun
 hf = gcf;
 handles.hf = hf;
 
+valUI = guidata(handles.hf);
+if isempty(valUI)
+    valUI.stimulus = 1;
+    valUI.model = 1;
+end
 %% Create panel, dropdown menus, labels, buttons
 handles.hp1 = uipanel('Parent',hf,'BackgroundColor',[.8 .8 .8],'Units','Normalized',...
     'Position',[.08 .5 .2 .45]);
 s1 = 'Choose the the stimulus';
 s2 = 'Choose the model structure \n that will process the rhythm';
 handles.dropdownmenu1 = uicontrol('Parent',handles.hp1,'Style','popupmenu',...
-    'String','Complexity level 0, Pattern 1','FontSize',11,...
+    'String','Complexity level 0, Pattern 1','FontSize',11,'Value',valUI.stimulus,...
     'Units','normalized','Position',[.05 .75 .9 .125],'TooltipString', s1);
 handles.dropdownmenu2 = uicontrol('Parent',handles.hp1,'Style','popupmenu',...
-    'String','One Layer','FontSize',11,'TooltipString', s2,...
+    'String','One Layer','FontSize',11,'TooltipString', s2,'Value',valUI.model,...
     'Units','normalized','Position',[.05 .45 .9 .125]);
 handles.pushbutton1 = uicontrol('Parent',handles.hp1,'Style','pushbutton',...
     'String','Run','Fontsize',15,'Units','normalized','Position',[.05 .05 .45 .3]);
@@ -58,8 +63,8 @@ handles.ax2 = axes('Parent',hf,'Units','normalized','Position',[.38 .38 .3 .25],
     'XTick',[],'YTick',[],'box','on');
 handles.ax3 = axes('Parent',hf,'Units','normalized','Position',[.38 .72 .3 .25],...
     'XTick',[],'YTick',[],'box','on');
-handles.ax4 = axes('Parent',hf','Units','normalized','Position',[.73 .3 .25 .45],...
-    'XTick',[],'YTick',[],'box','on');
+handles.ax4 = axes('Parent',hf','Units','normalized','Position',[.73 .3 .25 .55],...
+    'Visible','off');
 
 %% Define callback functions
 set(handles.pushbutton1,'Callback',{@runStop,handles})
@@ -78,9 +83,9 @@ set(handles.ax2,'XTick',[],'YTick',[],'box','on');
 cla(handles.ax3);
 set(handles.ax3,'XTick',[],'YTick',[],'box','on');
 cla(handles.ax4);
-set(handles.ax4,'XTick',[],'YTick',[],'box','on');
+set(handles.ax4,'Visible','off');
 cla(handles.ax5);
-set(handles.ax5,'XTick',[],'YTick',[],'box','on');
+set(handles.ax5,'Visible','off');
 cb = findall(gcf,'tag','Colorbar');
 delete(cb);
 tt = findall(gcf,'type','text');
@@ -149,6 +154,9 @@ if strcmp(name,'Run')
     integrate(stimulus,model,handles);
 else
     set(source,'String','Run')
+    valUI.stimulus = get(handles.dropdownmenu1,'Value');
+    valUI.model    = get(handles.dropdownmenu2,'Value');
+    guidata(handles.hf,valUI);
     initialRun;
 end
 %% Run rhythm function
