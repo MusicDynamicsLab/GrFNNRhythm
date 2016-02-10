@@ -163,12 +163,13 @@ ampMult = 0.05;
 
 %% Run simulation
 filename = stimulus;
-s = stimulusMake('mid', filename, [0 48.5], Fs, 'display', 4, 'inputType', 'active');
+s = stimulusMake(1, 'mid', filename, [0 48.5], Fs, 'display', 2);
+
 s.x = ampMult*s.x/rms(s.x);
 s.x = hilbert(s.x);
 disp(filename);
 eval(rhythm);
-s.sAx = handles.ax1;
+M.s{1}.sAx = handles.ax1;
 M.n{1}.nAx = handles.ax2;
 if exist('n2','var')
     M.n{2}.nAx = handles.ax3;
@@ -198,7 +199,7 @@ if exist('C', 'var')
 end
 
 try
-    M = odeRK4fs(M, s);
+    M = odeRK4fs(M);
 catch
     disp('User stopped integration')
     interrupted = 1;

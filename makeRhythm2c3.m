@@ -5,7 +5,8 @@ n1 = networkMake(1, 'hopf', alpha1, beta11, beta12, 0,  0,  neps1, ...
 n2 = networkMake(2, 'hopf', alpha2, beta21, beta22,  0, 0, neps2, ...
                     'log', .375, 12, 321, 'tick', 2.^(-1:3), ...
                     'display', 4, 'save', 1);
-n1.w = 3.0;
+n1 = connectAdd(s, n1, 1, 'type', 'active');
+n1.con{1}.w = 3.0;
 
 %% Connections
 modes =      [1/3 1/2 1/1 2/1 3/1];
