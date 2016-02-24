@@ -34,8 +34,8 @@ for c = [1 2 3]
         matfilename = sprintf('comp%dp%d.mat', c, p);
         filename = sprintf('comp%dp%d.mid', c, p)
 
-        s = stimulusMake('mid', filename, [0 24.5], Fs, 'inputType', 'active', ...
-                        'display', 4, 'inputType', 'active');
+        s = stimulusMake(1, 'mid', filename, [0 24.5], Fs, 'inputType', 'active', ...
+                        'display', 4);
         s.x = ampMult*s.x/rms(s.x);
         s.x = hilbert(s.x);
         eval(makeModel);
@@ -51,8 +51,8 @@ end
         matfilename = sprintf('comp4p%d.mat', p);
         filename = sprintf('comp4p%d.mid', p)
 
-        s = stimulusMake('mid', filename, [0 24.5], Fs, 'inputType', 'active', ...
-                        'display', 4, 'inputType', 'active');
+        s = stimulusMake(1, 'mid', filename, [0 24.5], Fs, 'inputType', 'active', ...
+                        'display', 4);
         s.x = ampMult*s.x/rms(s.x);
         s.x = hilbert(s.x);
         eval(makeModel);
