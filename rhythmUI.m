@@ -49,7 +49,7 @@ complexity = {'Complexity level 0, Pattern 1';...
 set(handles.dropdownmenu1, 'String', complexity);
 set(handles.dropdownmenu2,'BackgroundColor','white');
 rhythmModel = {'One Layer';'One Layer, local connection';'One Layer, harmonic connection';...
-               'Two Layer, afferent only';'Two Layer, all, local';'Two layer, all, harmonic'};
+               'Two Layer, afferent only';'Two Layer, all, local';'Two Layer, all, harmonic'};
 set(handles.dropdownmenu2, 'String', rhythmModel);
 
 %% Create axes
