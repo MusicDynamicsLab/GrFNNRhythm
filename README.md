@@ -6,7 +6,7 @@ The final model described below is meant to be more-or-less the same as the [Vel
 
 Entrainment of cortical rhythms to acoustic rhythms has been hypothesized to be the neural correlate of pulse and meter perception in music. A neurodynamic model that shows how self-organization of oscillations in interacting sensory and motor networks could be responsible for the formation of the pulse percept in complex rhythms. This model is one of the few consistent with neurophysiological evidence on the role of neural oscillation, and it explains a phenomenon (missing fundamental pulse) that other computational models fail to explain. This model provides a theoretical link between oscillatory neurodynamics and the induction of pulse and meter in musical rhythm.
 
-A user interface to explore GrFNN models for processing musical rhythms is included. The GUI (implemented in the file rhythmUI.m) allows the user to choose a stimulus of a given rhythmic complexity (from a straightforward isochronous rhythm to more rhythmically complex, syncopated rhythms) and process it through one of the following six GrFNN models:
+A user interface to explore GrFNN models for processing musical rhythms is included in this repository. The GUI (implemented in the file rhythmUI.m) allows the user to choose a stimulus of a given rhythmic complexity (from a straightforward isochronous rhythm to more rhythmically complex, syncopated rhythms) and process it through one of the following six GrFNN models:
 
 1 - One network with no internal connections. This model can be used by selecting "One Layer" in the dropdown menu.
 
