@@ -1,17 +1,21 @@
 # GrFNNRhythm
 
-This repository contains a user interface to explore GrFNN models for processing musical rhythms. The GUI (implemented in the file rhythmGUI) allows the user to choose a stimulus of a given rhythmic complexity (from a straightforward isochronous rhythm to more rhythmically complex syncopated rhythms) and process it through one of the following six GrFNN models:
+This repository contains MATLAB code that models beat perception of musical rhythm using the GrFNNToolbox. 
 
-1 - One GrFNN layer with no internal connections. This model can be used by selecting "One Layer" in the dropdown menu.
+The final model described below is meant to be more-or-less the same as the [Velasco & Large (2011)](http://ismir2011.ismir.net/papers/PS2-3.pdf) model from ISMIR. The most important difference is that the connections from Layer 2 (motor) to Layer 1 (sensory) are excitatory, not inhibitory. It is also nearly identical (with some simplifications) to the model from [Large, Herrera and Velasco (2015)](http://dx.doi.org/10.3389/fnsys.2015.00159).
 
-2 - One GrFNN layer with local (1:1) internal connections. Can be used by selecting "One Layer, local connection" in the dropdown menu.
+Entrainment of cortical rhythms to acoustic rhythms has been hypothesized to be the neural correlate of pulse and meter perception in music. A neurodynamic model that shows how self-organization of oscillations in interacting sensory and motor networks could be responsible for the formation of the pulse percept in complex rhythms. This model is one of the few consistent with neurophysiological evidence on the role of neural oscillation, and it explains a phenomenon that other computational models fail to explain. This model provides a theoretical link between oscillatory neurodynamics and the induction of pulse and meter in musical rhythm.
 
-3 - One GrFNN layer with 1:1, 2:1, 3:1, 1:2, and 1:3 internal connections. Can be used by selecting "One Layer, harmonic connections" in the dropdown menu.
+A user interface to explore GrFNN models for processing musical rhythms is included. The GUI (implemented in the file rhythmUI.m) allows the user to choose a stimulus of a given rhythmic complexity (from a straightforward isochronous rhythm to more rhythmically complex, syncopated rhythms) and process it through one of the following six GrFNN models:
 
-4 - Two GrFNN layers with local (1:1) afferent connections, no internal connections. Can be used by selecting "Two Layer, afferent only".
+1 - One network with no internal connections. This model can be used by selecting "One Layer" in the dropdown menu.
 
-5 - Two GrFNN layers with local (1:1) afferent, efferent, and internal connections. Can be used by selecting "Two Layer, all, local".
+2 - One network with local (1:1) internal connections. Can be used by selecting "One Layer, local connection" in the dropdown menu.
 
-6 - Two GrFNN layers with 1:1, 2:1, 3:1, 1:2, and 1:3 afferent, efferent, and internal connections. Can be used by selecting "Two Layer, all, harmonic". 
+3 - One network with 1:1, 2:1, 3:1, 1:2, and 1:3 internal connections. Can be used by selecting "One Layer, harmonic connections" in the dropdown menu.
 
-The last model is meant to be more-or-less the same as the [Velasco & Large (2011)](http://ismir2011.ismir.net/papers/PS2-3.pdf) model from ISMIR. The most important difference is that the connections from Layer 2 (motor) to Layer 1 (sensory) are excitatory, not inhibitory. It is also nearly identical (with some simplifications) to the model from [Large, Herrera and Velasco (2015)](http://dx.doi.org/10.3389/fnsys.2015.00159).
+4 - Two networks with local (1:1) afferent connections, no internal connections. Can be used by selecting "Two Layer, afferent only".
+
+5 - Two networks with local (1:1) afferent, efferent, and internal connections. Can be used by selecting "Two Layer, all, local".
+
+6 - Two networks with 1:1, 2:1, 3:1, 1:2, and 1:3 afferent, efferent, and internal connections. Can be used by selecting "Two Layer, all, harmonic". 
