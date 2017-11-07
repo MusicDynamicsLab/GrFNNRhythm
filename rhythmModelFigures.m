@@ -45,9 +45,9 @@ nfft = 6*length(mf1);
 
 y = fft((mf1), nfft);
 f = s.fs/2*linspace(0,1,nfft/2+1);
-ya= abs(y(1:floor(nfft/2)+1))/nfft;
+ya1= abs(y(1:floor(nfft/2)+1))/nfft;
 
-plot(f(2:end), ya(2:end)/sum(ya(2:end)), sf(2:end), sy(2:end)/sum(sy(2:end)))
+plot(f(2:end), ya1(2:end)/sum(ya1(2:end)), sf(2:end), sy(2:end)/sum(sy(2:end)))
 set(gca, 'XLim', [0, 5], 'XTick', [.5 .75 1 1.25 2 4])
 grid
 
@@ -82,9 +82,9 @@ if length(M.n)>1
         
     y = fft(mf2, nfft);
     f = s.fs/2*linspace(0,1,nfft/2+1);
-    ya= abs(y(1:floor(nfft/2)+1))/nfft;
+    ya2= abs(y(1:floor(nfft/2)+1))/nfft;
     
-    plot(f(2:end), ya(2:end)/sum(ya(2:end)), sf(2:end), sy(2:end)/sum(sy(2:end))) %
+    plot(f(2:end), ya2(2:end)/sum(ya2(2:end)), sf(2:end), sy(2:end)/sum(sy(2:end))) %
     set(gca, 'XLim', [0, 5], 'XTick', [.5 .75 1 1.25 2 4])
     grid
     
