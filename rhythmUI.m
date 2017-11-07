@@ -14,8 +14,8 @@ handles.hf = hf;
 
 valUI = guidata(handles.hf);
 if isempty(valUI)
-    valUI.stimulus = 1;
-    valUI.model = 1;
+    valUI.stimulus = 8;
+    valUI.model = 6;
 end
 %% Create panel, dropdown menus, labels, buttons
 handles.hp1 = uipanel('Parent',hf,'BackgroundColor',[.8 .8 .8],'Units','Normalized',...
@@ -152,7 +152,7 @@ end
 function integrate(stimulus,rhythm,handles)
 
 %% Parameters
-Fs = 48;
+Fs = 50;
 alpha1 =  1e-5; beta11 =  0; beta12 = -2; delta11 =  0; delta12 = 0;
 neps1 = 1;
 alpha2 =  -0.4; beta21 = 1.75; beta22 =-1.25; delta21 = 0; delta22 = 0;
@@ -162,8 +162,10 @@ lambda =  -1; mu1 = 4; mu2 = -2.2; ceps = 1; kappa = 1; % Critical
 ampMult = 0.05;
 
 %% Run simulation
+global s M
+
 filename = stimulus;
-s = stimulusMake(1, 'mid', filename, [0 48.5], Fs, 'display', 2);
+s = stimulusMake(1, 'mid', filename, [0 32.5], Fs, 'display', 2);
 
 s.x = ampMult*s.x/rms(s.x);
 s.x = hilbert(s.x);
