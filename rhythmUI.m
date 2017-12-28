@@ -45,7 +45,8 @@ complexity = {'Complexity level 0, Pattern 1';...
     'Complexity level 2, Pattern 1';'Complexity level 2, Pattern 2';...
     'Complexity level 3, Pattern 1';'Complexity level 3, Pattern 2';...
     'Complexity level 4, Pattern 1';'Complexity level 4, Pattern 2';...
-    'Complexity level 4, Pattern 3';'Complexity level 4, Pattern 4'};
+    'Complexity level 4, Pattern 3';'Complexity level 4, Pattern 4';...
+    'Random Pattern'};
 set(handles.dropdownmenu1, 'String', complexity);
 set(handles.dropdownmenu2,'BackgroundColor','white');
 rhythmModel = {'One Layer';'One Layer, local connection';'One Layer, harmonic connection';...
@@ -115,6 +116,8 @@ switch stimulusChoice
         stimulus = 'comp4p3.mid';
     case 11
         stimulus = 'comp4p5.mid';     
+    case 12
+        stimulus = 'randpat.mid';     
 end
 
 switch rhythmChoice
@@ -152,7 +155,7 @@ end
 function integrate(stimulus,rhythm,handles)
 
 %% Parameters
-Fs = 50;
+Fs = 100;
 alpha1 =  1e-5; beta11 =  0; beta12 = -2; delta11 =  0; delta12 = 0;
 neps1 = 1;
 alpha2 =  -0.4; beta21 = 1.75; beta22 =-1.25; delta21 = 0; delta22 = 0;
